@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>단어게임</title>
+<style>
+#wrapper{
+	width:400px;
+	height:500px;
+	border: 20px solid red;
+	margin:auto;
+
+}
+#wordView{
+	width:100%;
+	height:120px;
+	background:#00ffcc;
+	font-size:50pt;
+	text-align:center;
+}
+#word_input{
+	width:100%;
+	height:90px;
+	background: yellow;
+	font-size:40pt;
+}
+#feedback{
+	width:100%;
+	height:200px;
+	font-size:120pt;
+	text-align:center;
+	color: red;
+}
+#score{
+	width:100%;
+	height:70pt;
+	font-size:50pt;
+	text-align:center;
+
+}
+</style>
+<script>
+var count=0;//배열의 몇번째를 보여줄지를 결정하는 전역변수!!
+var jumsu;// 주적될 점수!!
+var word= new Array(); //크기를 정하지 않은 배열 공간 선언
+word[0]="광화문";
+word[1]="마우스";
+word[2]="택시";
+word[3]="연필";
+word[4]="스마트폰";
+word[5]="무궁화";
+word[6]="제주도";
+word[7]="공중전화";
+word[8]="신발";
+word[9]="양말";
+
+var count=0;//배열의 번지수를 결정하는 전역변수
+
+	//게임 가동과 동시에 초기에 하고싶은 작업...
+	function init(){
+		//게임에 사용할 단어를 메모리에 미리 확보해 놓자!!
+		document.getElementById("wordView");
+		wordView.innerText=word[count];
+		//커서를 올려놓자!!
+
+		var word_input=document.getElementById("word_input");
+		word_input.focus();//커서 올려놓는 기능의 함수호출
+	}
+
+	function enter(){
+		var key=event.keyCode;//사용저거 입력한 키보드의 아스키값 반환
+		//alert("당신이 입력한 키보드의 아스키코드값은"+key);
+		
+		if(key==13){
+		//alert("키보드 눌렀어?");
+
+		//사용자가 입력한 데이터와 현재 보고있는 배열과 값을 비교하여
+		//알맞는 피드백을 처리하자!!
+		var word_input=document.getElementById("word_input");
+		if(word_input.value == word[count]){
+			//alert("일치합니다.");
+			document.getElementById("feedback").innerText="0";
+
+			//점수 증가 및 출력!!
+			jumsu=+10;
+			document.getElementById("score").innertext=jumsu;
+		}else{
+			//alert("틀립니다.");
+			document.getElementById("feedback").innerText="X";
+		}
+		//입력한 데이터 다시 초기화
+		word_input.value="";
+
+		count++;
+		document.getElementById("wordView").innerText=word[count];
+	}
+}
+</script>
+</head>
+<body onLoad="init()">
+	<div id="wrapper">
+		<div id="wordView"></div>
+		<input type="text" id="word_input" onKeyUp="enter()">
+		<div id="feedback"></div>
+		<div id="score">0점</div>
+	</div>
+  
+</body>
+</html>

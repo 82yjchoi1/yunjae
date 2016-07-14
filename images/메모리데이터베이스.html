@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>메모리 데이터베이스</title>
+<style>
+#wrapper{
+	width:650px;
+	height:600px;
+	margin:auto;
+}
+#leftSide{
+	width:150px;
+	height:600px;
+	background:pink;
+	float:left;
+}
+#rightSide{
+	width:500px;
+	height:600px;
+	background:yellow;
+	float:left;
+}
+</style>
+<script>
+var bt;
+var m_id;
+var pw;
+//여러명의 회원을 담을 배열!!
+var memberList=new Array();//크기가 정해져 있으면 안됨
+var count=0;
+
+//문서가 로드되면...
+window.addEventListener("load", function(){
+	init();
+});
+
+function init(){
+	bt=document.getElementById("bt");
+	m_id=document.getElementById("m_id");
+	pw=document.getElementById("pw");
+
+	bt.addEventListener("click", function(){
+		//아이디를 입력하지 않으면...욕!!
+		if(m_id.value==""){
+			alert("아이디를 입력하세요");
+			m_id.focus();//커서 올려놓기!
+			return;
+		}else if(!pw.value){
+			//패스워드를 입력하지 않으면..욕!!
+			alert("패스워드를 입력하세요");
+			pw.focus();
+			return;
+		}
+
+		//제대로 넣은 경우엔 등록 절차 수행 !!
+		//지금 등록하려는 사람의 아이디와 패스워드를 일차원 배열에 
+		//보관해놓자!!
+		var member =[m_id.value , pw.value];
+	
+		//큰배열에 담기!!
+		
+		/*개발자가 직접 카운트를 세서 넣는 방법
+		memberList[count]=member;
+		count++;
+		*/
+		memberList.push(member);//기존 배열에 요소를 추가함!!
+		
+		alert(memberList.length+"번째 가입자 이십니다!!");
+	});
+
+}
+
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="leftSide">
+		ID:<input type="text" size="7" maxlength="12" id="m_id"><br>
+		PW:<input type="password" size="7" maxlength="8" id="pw"><br>
+		<input type="button" value="등록" id="bt">
+	</div>
+	<div id="rightSide"></div>
+</div>	
+</body>
+</html>

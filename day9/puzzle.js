@@ -1,0 +1,34 @@
+<script>
+var stage;
+//프로그램이 가동되자마자 백그라운드가 노란색인 div를 생성 및 추가하기
+ window.addEventListener("load", function(){
+	stage=document.createElement("div");
+	stage.style.background="yellow";
+	stage.style.width="800px";
+	stage.style.height="800px";
+	stage.style.margin="auto";
+
+	//연애인 사진 배경으로 지정하기!!
+	stage.style.backgroundImage="url('../images/nimo.jpg')";
+
+	document.body.appendChild(stage);
+ });
+ 
+ //다량의 div를 생성하기!!
+ function createBox(){
+
+	var p = new Puzzle(stage, 100, 100, "black");
+	p.init();
+
+	var p = new Puzzle(stage, 100, 100, "green");
+	p.init();
+ }
+	
+
+
+ </script>
+</head>
+<body>
+<div id="stage"></div> 
+</body>
+</html>

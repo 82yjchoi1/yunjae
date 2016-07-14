@@ -1,0 +1,300 @@
+GUGUN
+--------------------------------------------------------------------------------
+강남구
+강동구
+강북구
+강서구
+관악구
+광진구
+구로구
+금천구
+노원구
+도봉구
+동대문구
+
+GUGUN
+--------------------------------------------------------------------------------
+동작구
+마포구
+서대문구
+서초구
+성동구
+성북구
+송파구
+양천구
+영등포구
+용산구
+은평구
+
+GUGUN
+--------------------------------------------------------------------------------
+종로구
+중구
+중랑구
+
+25 rows selected.
+
+SQL> select sido from post group by sido;
+
+SIDO
+--------------------------------------------------------------------------------
+서울
+충남
+부산
+인천
+울산
+제주
+광주
+대전
+대구
+강원
+경북
+
+SIDO
+--------------------------------------------------------------------------------
+전북
+전남
+경기
+경남
+세종
+충북
+
+17 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select gugun from post where sido='서울'
+SQL>
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+C:\Users\student>sqlplus java/java
+
+SQL*Plus: Release 11.2.0.2.0 Production on 화 6월 28 17:17:50 2016
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> select * from emp;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE
+---------- -------------------- ------------------ ---------- --------
+       SAL       COMM     DEPTNO
+---------- ---------- ----------
+      7777 미생                 SALESMAN
+      8000
+
+      7499 ALLEN                SALESMAN                 7698 81/02/20
+      1600        300         30
+
+      7521 WARD                 SALESMAN                 7698 81/02/22
+      1250        500         30
+
+
+     EMPNO ENAME                JOB                       MGR HIREDATE
+---------- -------------------- ------------------ ---------- --------
+       SAL       COMM     DEPTNO
+---------- ---------- ----------
+      7566 JONES                MANAGER                  7839 81/04/02
+      2975                    20
+
+      7654 MARTIN               SALESMAN                 7698 81/09/28
+      1250       1400         30
+
+      7698 BLAKE                MANAGER                  7839 81/05/01
+      2850                    30
+
+
+     EMPNO ENAME                JOB                       MGR HIREDATE
+---------- -------------------- ------------------ ---------- --------
+       SAL       COMM     DEPTNO
+---------- ---------- ----------
+      7782 CLARK                MANAGER                  7839 81/06/09
+      2450                    10
+
+      7788 SCOTT                ANALYST                  7566 87/04/19
+      3000                    20
+
+      7839 킹왕짱               PRESIDENT                     81/11/17
+      5000                    10
+
+
+     EMPNO ENAME                JOB                       MGR HIREDATE
+---------- -------------------- ------------------ ---------- --------
+       SAL       COMM     DEPTNO
+---------- ---------- ----------
+      7844 TURNER               SALESMAN                 7698 81/09/08
+      1500          0         30
+
+      7876 ADAMS                CLERK                    7788 87/05/23
+      1100                    20
+
+      7900 JAMES                CLERK                    7698 81/12/03
+       950                    30
+
+
+     EMPNO ENAME                JOB                       MGR HIREDATE
+---------- -------------------- ------------------ ---------- --------
+       SAL       COMM     DEPTNO
+---------- ---------- ----------
+      7902 FORD                 ANALYST                  7566 81/12/03
+      3000                    20
+
+      7934 MILLER               CLERK                    7782 82/01/23
+      1300                    10
+
+
+14 rows selected.
+
+SQL> set line 200
+SQL> select * from emp;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+      7777 미생                 SALESMAN                                     8000
+      7499 ALLEN                SALESMAN                 7698 81/02/20       1600        300         30
+      7521 WARD                 SALESMAN                 7698 81/02/22       1250        500         30
+      7566 JONES                MANAGER                  7839 81/04/02       2975                    20
+      7654 MARTIN               SALESMAN                 7698 81/09/28       1250       1400         30
+      7698 BLAKE                MANAGER                  7839 81/05/01       2850                    30
+      7782 CLARK                MANAGER                  7839 81/06/09       2450                    10
+      7788 SCOTT                ANALYST                  7566 87/04/19       3000                    20
+      7839 킹왕짱               PRESIDENT                     81/11/17       5000                    10
+      7844 TURNER               SALESMAN                 7698 81/09/08       1500          0         30
+      7876 ADAMS                CLERK                    7788 87/05/23       1100                    20
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+      7900 JAMES                CLERK                    7698 81/12/03        950                    30
+      7902 FORD                 ANALYST                  7566 81/12/03       3000                    20
+      7934 MILLER               CLERK                    7782 82/01/23       1300                    10
+
+14 rows selected.
+
+SQL> select job from emp group by job;
+
+JOB
+------------------
+SALESMAN
+CLERK
+PRESIDENT
+MANAGER
+ANALYST
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal from emp group by sal
+SQL>
+SQL> /
+
+       SAL
+----------
+      2450
+      5000
+      1300
+      1250
+      2850
+      2975
+      1100
+      3000
+      8000
+      1600
+      1500
+
+       SAL
+----------
+       950
+
+12 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select job, count(job) from emp group by job
+SQL> /
+
+JOB                COUNT(JOB)
+------------------ ----------
+SALESMAN                    5
+CLERK                       3
+PRESIDENT                   1
+MANAGER                     3
+ANALYST                     2
+
+SQL> select * from emp
+  2  /
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+      7777 미생                 SALESMAN                                     8000
+      7499 ALLEN                SALESMAN                 7698 81/02/20       1600        300         30
+      7521 WARD                 SALESMAN                 7698 81/02/22       1250        500         30
+      7566 JONES                MANAGER                  7839 81/04/02       2975                    20
+      7654 MARTIN               SALESMAN                 7698 81/09/28       1250       1400         30
+      7698 BLAKE                MANAGER                  7839 81/05/01       2850                    30
+      7782 CLARK                MANAGER                  7839 81/06/09       2450                    10
+      7788 SCOTT                ANALYST                  7566 87/04/19       3000                    20
+      7839 킹왕짱               PRESIDENT                     81/11/17       5000                    10
+      7844 TURNER               SALESMAN                 7698 81/09/08       1500          0         30
+      7876 ADAMS                CLERK                    7788 87/05/23       1100                    20
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+      7900 JAMES                CLERK                    7698 81/12/03        950                    30
+      7902 FORD                 ANALYST                  7566 81/12/03       3000                    20
+      7934 MILLER               CLERK                    7782 82/01/23       1300                    10
+
+14 rows selected.
+
+SQL> select deptno, count(job) from emp group by job;
+select deptno, count(job) from emp group by job
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+
+SQL> select deptno, count(job) from emp group by job
+  2  /
+select deptno, count(job) from emp group by job
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+
+SQL> select deptno, count(job) from emp group by deptno;
+
+    DEPTNO COUNT(JOB)
+---------- ----------
+                    1
+        30          6
+        20          4
+        10          3
+
+SQL> select deptno from emp group by deptno;
+
+    DEPTNO
+----------
+
+        30
+        20
+        10
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno, count(*) from emp group by deptno
+SQL> /
+
+    DEPTNO   COUNT(*)
+---------- ----------
+                    1
+        30          6
+        20          4
+        10          3
+
+SQL>spool'c:\oracle_study2일차_1';
