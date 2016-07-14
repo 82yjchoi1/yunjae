@@ -28,9 +28,22 @@ input{
 	font-size:12px;
 }
 </style>
-<script></script>
+<script>
+var area;
+
+function init(){
+	area=document.getElementById("area");
+}
+function enter(obj){
+	oper.chatA.area.value+=obj.value+"\n";
+	area.value+=obj.value+"\n";
+	obj.value="";
+}
+</script>
 </head>
-<body>
+<body onload="init()">
  <div id="wrapper"></div> 
+	<textarea id="area">점심먹었니?</textarea>
+	<input type="text" onKeyUp="enter(this)">
 </body>
 </html>
